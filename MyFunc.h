@@ -39,6 +39,7 @@ public:
 			Liter[i].L = L[i];
 		}
 	}
+	void quickSort(T *a, int l, int r);
 	void outShortMenu();
 	void inputTxt( FILE *f);
 	void inputRnd();
@@ -67,6 +68,29 @@ public:
 	int outB(Menu My);
 };
 
+void Magazin::quickSort(T *a, int l, int r){
+	T c;
+	int i = l, j = r;
+	T middle = a[(j + i) / 2];
+
+	do{
+		while (a[i] < middle) i++;
+		while (a[j] > middle) j--;
+
+		if (i <= j)
+		{
+			c = a[i];
+			a[i] = a[j];
+			a[j] = c;
+			i++;
+			j--;
+		}
+
+	} while (i < j);
+
+	if (i < r) quickSort(a, i, r);
+	if (j > l) quickSort(a, l, j);
+}
 void Magazin::textZap(){
 	int g;
 	do{
